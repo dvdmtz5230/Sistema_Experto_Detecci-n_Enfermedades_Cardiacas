@@ -1,0 +1,50 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <h2 style="text-align: center">Registro de médicos</h2>
+            <div class="card">
+                <div class="card-body">
+                    <form action="/links/add" method="POST">
+                        <div class="form-group">
+                            <h5>Nombre del médico</h5>
+                            <input type="text" class="form-control" name="NombreMedico" placeholder="Nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <h5>Correo electrónico</h5>
+                            <input type="text" name="CorreoElectronicoMedico" class="form-control" placeholder="Correo" required>
+                        </div>
+                        <div class="form-group">
+                            <h5>Apellido Paterno</h5>
+                            <input type="text" class="form-control" name="ApellidoPaternoMedico" placeholder="Apellido Paterno" required>
+                        </div>
+                        <div class="form-group">
+                            <h5>Apellido Materno</h5>
+                            <input type="text" name="ApellidoMaternoMedico" class="form-control" placeholder="Apellido Materno" required>
+                        </div>
+                        <div class="form-group">
+                            <h5>Cédula Profesional</h5>
+                            <input type="text" name="CedulaProfesional" class="form-control" placeholder="Cédula Profesional" required>
+                        </div>
+                        <div class="form-group">
+                            <h5>Fecha de nacimiento</h5>
+                            <input type="text" name="FechaNacimientoMedico" class="form-control" placeholder="Fecha Nacimiento" required>
+                        </div>
+                        <h5>Género</h5>
+                        <div class="form-group">
+                            <input type="text" name="SexoMedico" class="form-control" placeholder="Género" required>
+                        </div>
+                        <h5>Contraseña</h5>
+                        <div class="form-group">
+                            <input type="password" name="Contra" class="form-control" placeholder="Contraseña" required>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block">Siguiente</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,218 @@
+  <div class="container p-4">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-11">
+          <h2>Perfil de medico</h2>
+  <br>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#home">Datos generales</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#menu1">Domicilio</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#menu2">Cambiar contraseña</a>
+    </li>
+  </ul>
+
+   <!-- Tab panes -->
+  <div class="tab-content">
+    <div id="home" class="container tab-pane active"><br>
+         <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-11">
+          
+    <br>
+    <h4>Datos generales:</h4>
+    <div class="media border p-3">
+        <img src="/Imagenes/paciente.jfif" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:80px;">
+        <div class="media-body">
+        <h4>Cédula:{{linkss.CedulaProfesional}}</h4>
+        <h4>Nombre:{{linkss.NombreMedico}} {{linkss.ApellidoPaternoMedico}} {{linkss.ApellidoMaternoMedico}}  </h4>
+        <h4>Fecha nacimiento:{{linkss.FechaNacimientoMedico}}</h4>
+        <h4>Género:<td>{{linkss.SexoMedico}}</td></h4>
+        <h4>Correo:{{linkss.CorreoElectronicoMedico}}</h4>
+         
+        <td>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">
+            Editar datos generales
+            </button>
+        </td>
+        
+        </div>
+    </div>
+            </div>
+        </div> 
+    </div>
+    <!-- The Modal -->
+  <div class="modal" id="myModal2">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h2>Editar medico</h2>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form action="/links/editt/{{linkss.CedulaProfesional}}" method="POST">
+
+                        <div class="form-group">
+                            <h5>Cédula:</h5>
+                            <input type="text" value="{{linkss.CedulaProfesional}}" class="form-control" name="CedulaProfesional" placeholder="Nombre">
+                        </div>
+
+                        <div class="form-group">
+                            <h5>Nombre:</h5>
+                            <input type="text" value="{{linkss.NombreMedico}}" class="form-control" name="NombreMedico" placeholder="Nombre">
+                        </div>
+                        <div class="form-group">
+                            <h5>Apellido paterno:</h5>
+                            <input type="text" value="{{linkss.ApellidoPaternoMedico}}" name="ApellidoPaternoMedico" class="form-control" placeholder="Apellido paterno">
+                        </div>
+                        <div class="form-group">
+                          <h5>Apellido materno:</h5>
+                            <input type="text" value="{{linkss.ApellidoMaternoMedico}}" class="form-control" name="ApellidoMaternoMedico" placeholder="Apellido Materno">
+                        </div>
+                        <div class="form-group">
+                            <h5>Correo:</h5> 
+                            <input type="email" name="CorreoElectronicoMedico" value="{{linkss.CorreoElectronicoMedico}}" class="form-control" placeholder="Correo">
+                        </div>
+                         
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block">Guardar cambios</button>
+                        </div>
+                    </form></div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+    <div id="menu1" class="container tab-pane fade"><br>
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-11">
+          
+
+            
+    <h4>Domicilio:</h4>
+    <div class="media border p-3">
+        <img src="/Imagenes/paciente.jfif" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:80px;">
+        <div class="media-body">
+        
+        <h4>Calle:{{linkss.Calle}}</h4>
+        <h4>Colonia:{{linkss.Colonia}}</h4>
+        <h4>Municipio:{{linkss.Municipio}}</h4>
+        <h4>Numero Interior:{{linkss.NumeroInter}}</h4>
+        <h4>Numero Exterior:{{linkss.NumeroExt}}</h4>
+
+         <td>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditarDom">
+            Editar Domicilio
+            </button>
+        </td>
+          </div>
+       </div>
+     </div>
+  </div> 
+</div>
+
+    <div id="menu2" class="container tab-pane fade"><br>
+      <div class="container">
+   <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-11">
+          
+
+          <form action="/links/editContraM/{{linkss.CedulaProfesional}}" method="POST">
+         <div class="form-group">
+           <h4>Escriba su nueva contraseña</h4> 
+          <input type="text" class="form-control" name="Contra" placeholder="Contraseña nueva">
+          </div>
+
+          <div class="form-group">
+          <button class="btn btn-success btn-block">Guardar nueva contraseña</button>
+          </div>
+        </form>   
+       </div>
+     </div>
+
+  <!-- Button to Open the Modal -->
+  
+
+  
+  
+</div></div>
+  </div>
+</div>
+            
+        </div>
+    </div>
+
+
+ <div class="modal" id="EditarDom">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h1 class="modal-title">Editar Domicilio</h1>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form action="/links/DomEditM/{{linkss.idDomicilio}}" method="POST">
+                        <div class="form-group">
+                            <h4>Estado:</h4> 
+                            <input type="text" class="form-control" name="Estado" placeholder="Estado" value="{{linkss.Estado}}">
+                        </div>
+                        <div class="form-group">
+                            <h4>Ciudad:</h4> 
+                            <input type="text" name="Ciudad" class="form-control" placeholder="Ciudad" value="{{linkss.Ciudad}}">
+                        </div>
+                        <div class="form-group">
+                            <h4>Municipio:</h4> 
+                            <input type="text" class="form-control" name="Municipio" placeholder="Municipio" value="{{linkss.Municipio}}">
+                        </div>
+                        <div class="form-group">
+                            <h4>Colonia:</h4> 
+                            <input type="text" name="Colonia" class="form-control" placeholder="Colonia" value="{{links.Colonia}}">
+                        </div>
+                        <div class="form-group">
+                          <h4>Calle:</h4> 
+                            <input type="text" name="Calle" class="form-control" placeholder="Calle" value="{{linkss.Calle}}">
+                        </div>
+                        <div class="form-group">
+                            <h4>Numero Externo:</h4> 
+                            <input type="text" name="NumeroExt" class="form-control" placeholder="Numero Externo" value="{{linkss.NumeroExt}}">
+                        </div>
+                        <div class="form-group">
+                           <h4>Numero Interno:</h4> 
+                            <input type="text" name="NumeroInter" class="form-control" placeholder="Numero Interno" value="{{linkss.NumeroInter}}">
+                        </div>
+                         
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block">Save</button>
+                        </div>
+                    </form>
+                    </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+   

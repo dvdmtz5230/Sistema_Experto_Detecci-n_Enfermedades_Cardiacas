@@ -1,0 +1,25 @@
+<div class="row">    
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="container p-5">
+            <div class="container mt-3">
+                <div class="media border p-5">
+                    <div class="media-body">
+                    <h4 style="text-align: center;">Recuperación de contraseña <small><p><i>Por favor llene los campos</i></p></small></h4><br>
+                    <form method="POST" action="/Recuperar">
+                        <div class="form-group">
+                            <label style="text-align: center;">Correo electrónico</label>
+                            <input type="email" class="form-control" name="Correo" placeholder="ejemplo@ejemplo.com" required>
+                        </div><br>
+                        <div class="form-group">
+                            <label style="text-align: center;">Numero de seguro social</label>
+                            <input type="text" class="form-control" name="NSS" placeholder="123456789" required>
+                        </div><br>
+                        <button type="submit" class="btn btn-success">Recuperar contraseña</button>
+                    </form>      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>{{!--col-md-4--}}
+</div>

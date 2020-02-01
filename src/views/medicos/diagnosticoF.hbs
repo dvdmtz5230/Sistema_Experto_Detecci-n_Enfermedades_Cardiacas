@@ -1,0 +1,71 @@
+{{#if user.Correo}}  
+      <div class="container p-2">
+       
+       <img src="/Imagenes/error404.png" class="card-img-top" width='100' height='550'>
+        <a href="/profile" class="btn btn-primary "> Regresar al perfil </a>
+
+      </div>
+     
+      {{else if user.CedulaProfesional }}
+         <div class="container p-12">
+             <div class="row">
+                  <div class="col-md-12">
+                    <div class="card  text">
+                     <div class="card-body">
+                    <h3 style="text-align: left; color:cadetblue">Médico en turno</h3>
+                    <h5 style="text-align: left;">Nombre:{{user.NombreMedico}}</h5>
+                    <h3 style="text-align: left; color:cadetblue">Datos del paciente</h3>
+                    <div class="media-body">
+                    <h4>Número de seguro social:{{consulta.NSS}}</h4>
+                    <h4>Nombre:{{consulta.NombrePaciente}} {{consulta.ApellidoPaternoPaciente}} {{consulta.ApellidoMaternoPaciente}}  </h4>
+                    <h4>Fecha nacimiento:1998/04/10</h4>
+                    <h4>Género:<td>{{consulta.SexoPaciente}}</td></h4>
+                    <h4>Correo:{{consulta.CorreoElectronicoPaciente}}</h4>
+         
+        <h4>edad:{{consulta.edad}}</h4>
+        <br>
+        <br>
+      </div> 
+                    <h3 style="text-align: left;color:cadetblue">Diagnóstico generado apartir de sintomas proporcionados:
+                    <table class="table table-striped table-hover"> 
+                    <thead class="thead-dark">
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th>diagnóstico</th>
+                            <th>fecha de diagnóstico</th>
+                             <th></th>
+                             
+                            </tr>
+                    </thead>
+                    <tbody id="myTable">
+
+                        {{#each links}}
+                        <tr>
+                            <td><a href="/medicos/deleteDiagnostico/{{this.idSintomas}}/{{this.NSS}}" class="btn btn-danger">Eliminar</a></td>
+                            <td><a href="/medicos/confirmarDiagnostico/{{this.idSintomas}}/{{this.NSS}}" class="btn btn-info">Confirmar diagnóstico</a></td>
+                            <td>{{this.diagnostico}}</td>
+                            <td>{{this.fecha}}</td>
+                            <td> {{this.idSintomas}}</td>
+                             
+                        </tr>  
+                        {{/each}}                  
+                    </tbody>
+                     
+                     </table>
+                     
+                     <a href="/medicos/Pacientes" class="btn btn-danger">Cancelar</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+      {{else if user.NSS}}
+      <div class="container p-2">
+       
+       <img src="/Imagenes/error404.png" class="card-img-top" width='100' height='550'>
+        <a href="/profileP" class="btn btn-primary "> Regresar al perfil </a>
+
+      </div>
+      {{/if}}

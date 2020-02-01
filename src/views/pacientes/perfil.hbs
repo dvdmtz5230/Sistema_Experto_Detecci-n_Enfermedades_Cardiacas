@@ -1,0 +1,39 @@
+<div class="container p-4">
+    
+    <div class="row">
+        <div class="col-md-7">
+              
+                <h2>Publicaciones y recomendaciones  </h2>
+                <p>Aquí puedes ver publicaciones anteriores que han sido publicadas</p>
+                {{#each consulta}}
+                    <div class="media border p-3">
+                        <div class="media-body mt-3">
+                            <h5>{{this.titulo}}</h5>
+                            <p>{{this.info}}</p>  
+                            <p  type="text"style="text-align: right; link"><small><i>{{this.fuente}}<br> {{this.fecha}}</i></small></p>    
+                        </div>
+                         
+                            
+                    </div><br>
+                {{/each}}
+                </div>
+         
+        <div class="col-md-5">
+            <table class="table table-bordered">
+                <thead class="thead-light" style="text-align: center">
+                    <tr>
+                        <th>Historial de citas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each cita}}
+                    <tr>
+                        <td style="text-align: center"> Folio: {{this.idCitas}} <br> Fecha: {{this.fecha}}<br>{{this.Estado}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>

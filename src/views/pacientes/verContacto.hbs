@@ -1,0 +1,224 @@
+
+    {{#if links.IDC}}
+    <div class="container p-4">
+
+    <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-11">
+                
+    <div class="container mt-3">
+    <h2>Datos de contacto</h2>
+    <div class="media border p-3">
+        <img src="/Imagenes/paciente.jfif" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:80px;">
+        <div class="media-body">
+        <h4>Número de seguro social:{{links.NSS}}</h4>
+        <h4>Nombre:{{links.NombreC}} {{links.ApellidoPC}} {{links.ApellidoMC}}  </h4>
+      
+         
+        <h4>Correo:{{links.CorreoC}}</h4>
+        <h4>Celular:{{links.Telefono}}</h4>
+        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+          
+          Editar Contacto 
+          
+          </button></td>
+        <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal1">
+          
+          Eliminar Contacto
+          
+          </button></td>
+        <div class="container">
+  
+  <!-- Button to Open the Modal -->
+  
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h2>Editar contacto</h2>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form action="/pacientes/editC/{{links.IDC}}" method="POST">
+
+                        <div class="form-group">
+                            <h5>Nombre contacto:</h5>
+                            <input type="text" value="{{links.NombreC}}" class="form-control" name="NombreC" placeholder="Nombre">
+                        </div>
+                        <div class="form-group">
+                            <h5>Apellido paterno contacto:</h5>
+                            <input type="text" value="{{links.ApellidoPC}}" name="ApellidoPC" class="form-control" placeholder="Apellido paterno">
+                        </div>
+                        <div class="form-group">
+                          <h5>Apellido materno contacto:</h5>
+                            <input type="text" value="{{links.ApellidoMC}}" class="form-control" name="ApellidoMC" placeholder="Apellido Materno">
+                        </div>
+                        <div class="form-group">
+                            <h5>Correo contacto:</h5> 
+                            <input type="email" name="CorreoC" value="{{links.CorreoC}}" class="form-control" placeholder="Correo">
+                        </div>
+                        <div class="form-group">
+                            <h5>Telefono contacto:</h5>
+                            <input type="text" name="Telefono" value="{{links.Telefono}}" class="form-control" placeholder="Telefono">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block">Guardar contacto</button>
+                        </div>
+                    </form></div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+    <!-- Button to Open the Modal -->
+  
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h2>¿Seguro que desea eliminar contacto?</h2>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form action="/pacientes/deleteC/{{links.IDC}}" method="Get">
+
+                        <div class="form-group">
+                            <h5>Nombre contacto:</h5>
+                            <input type="text" disabled value="{{links.NombreC}}" class="form-control" name="NombreC" placeholder="Nombre">
+                        </div>
+                        <div class="form-group">
+                            <h5>Apellido paterno contacto:</h5>
+                            <input type="text" disabled value="{{links.ApellidoPC}}" name="ApellidoPC" class="form-control" placeholder="Apellido paterno">
+                        </div>
+                        <div class="form-group">
+                          <h5>Apellido materno contacto:</h5>
+                            <input type="text" disabled value="{{links.ApellidoMC}}" class="form-control" name="ApellidoMC" placeholder="Apellido Materno">
+                        </div>
+                        <div class="form-group">
+                            <h5>Correo contacto:</h5> 
+                            <input type="email" disabled name="CorreoC" value="{{links.CorreoC}}" class="form-control" placeholder="Correo">
+                        </div>
+                        <div class="form-group">
+                            <h5>Telefono contacto:</h5>
+                            <input type="text"  disabled name="Telefono" value="{{links.Telefono}}" class="form-control" placeholder="Telefono">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block">Si,eliminar</button>
+                        </div>
+                    </form>
+                    
+                    </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+</div>
+        </div>
+    </div>
+    </div>
+        
+                </div>
+            </div>
+
+
+    </div>
+
+  {{else}}
+  <div class="container p-4">
+    <div class="row">
+      <div class="col-md-11">
+        <div class="container mt-3">
+  <h1>Recuerde Registrar un contacto</h1>
+  <h4>Es importante crear un contacto para que pueda dar seguimiento de un paciente  </h4>
+  <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3">
+          
+          Registrar contacto 
+          
+          </button></td>
+  <!-- Button to Open the Modal -->
+  
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal3">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h2>Registrar contacto</h2>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form action="/pacientes/contacto" method="POST">
+                         <div class="form-group">
+                            <input type="text" class="form-control" name="IDC" value="0" hidden>
+                            <input type="text"  hidden name="NSS" class="form-control" value="{{user.NSS}}">
+                             
+                        </div>
+                        <div class="form-group">
+                            <h5>Nombre contacto:</h5>
+                            <input type="text"   class="form-control" name="NombreC" placeholder="Nombre">
+                        </div>
+                        <div class="form-group">
+                            <h5>Apellido paterno contacto:</h5>
+                            <input type="text"  name="ApellidoPC" class="form-control" placeholder="Apellido paterno">
+                        </div>
+                        <div class="form-group">
+                          <h5>Apellido materno contacto:</h5>
+                            <input type="text"   class="form-control" name="ApellidoMC" placeholder="Apellido Materno">
+                        </div>
+                        <div class="form-group">
+                            <h5>Correo contacto:</h5> 
+                            <input type="email" name="CorreoC"   class="form-control" placeholder="Correo">
+                        </div>
+                        <div class="form-group">
+                            <h5>Telefono contacto:</h5>
+                            <input type="text" name="Telefono"   class="form-control" placeholder="Telefono">
+                        </div>
+                        <div class="form-group">
+                            <h5>Contraseña contacto:</h5>
+                            <input required type="password" name="Contra" class="form-control" placeholder="Contraseña">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block">Guardar contacto</button>
+                        </div>
+                    </form></div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/if}}

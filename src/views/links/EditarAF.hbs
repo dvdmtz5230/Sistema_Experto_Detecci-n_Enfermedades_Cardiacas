@@ -1,0 +1,135 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-1"></div>
+         
+    </div>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-11">
+          <div class="form-group">
+            <form action="/links/EditarAF/{{ABC.IDAF}}/{{links.NSS}}" method="POST">
+              
+                <input type="text" hidden name="NSS" class="form-control" value="{{links.NSS}}">
+              </div>
+          <div><br>
+          <h4>Datos Generales del Familiar</h4>
+        </div>
+        <div class="form-group">
+          <br>
+     <h5>Nombre:</h5>
+     <input required type="text" value="{{ABC.NombreAF}} " class="form-control" name="NombreAF" placeholder="Nombre">
+    </div>
+    
+    <div class="form-group">
+      <h5>Apellido paterno:</h5>
+     <input required type="text" value="{{ABC.ApellidoAPAF}}" class="form-control" name="ApellidoAPAF" placeholder="Apellido Paterno">
+    </div>
+    <div class="form-group">
+      <h5>Apellido materno:</h5>
+     <input required type="text" value="{{ABC.ApellidoAMAF}}" name="ApellidoAMAF" class="form-control" placeholder="Apellido Materno">
+    </div>
+     
+    <div class="form-group">
+     
+     <label for="sel1">Selecione Género:</label>
+      <select required value="" class="form-control" id="sel1" name="GeneroAF">
+        <option selected disabled>{{ABC.GeneroAF}}</option>
+        
+        <option>Masculino</option>
+        <option>Femenino</option>
+        <option>Indefinido</option>
+      </select>
+      
+    </div>
+    <div class="form-group">
+      <h5>Padecimiento:</h5>
+     <input required type="text" value="{{ABC.Padecimiento}}" name="Padecimiento" class="form-control" placeholder="Padecimiento">
+    </div>
+     <div class="form-group">
+      
+     <label for="sel1">Parentesco:</label>
+     <h5>Parentesco:</h5>
+      <select required class="form-control" id="sel1" name="Parentesco">
+        <option selected disabled>{{ABC.Parentesco}}</option>
+        <option>Hermano/a</option>
+        <option>Tío/a</option>
+        <option>Abuelo/a</option>
+        <option>Primo/a</option>
+        <option>Padre</option>
+        <option>Madre</option>
+      </select>
+    </div>
+<div class="form-group">
+  <button class="btn btn-success btn-block">Guardar antecedente familiar</button>
+  <br>
+   <a href="/links/verPerfilP/{{links.NSS}}" class="btn btn-info">Regresar</a> 
+   <br> <br>
+   <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DarBaja">
+          
+          Eliminar antecedente
+          
+          </button>
+ </div>
+</form>
+
+</div>
+                
+            </div>
+           
+            
+        </div>
+        
+        </div>
+    </div>
+</div>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+<h2>HTML Table</h2>
+
+ 
+  <!-- The Modal -->
+  <div class="modal" id="DarBaja">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h2>¿Seguro que desea eliminar el antecedente?</h2>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form action="/links/deleteAF/{{ABC.IDAF}}/{{links.NSS}}" method="Get">
+
+                         
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block">Si,eliminar</button>
+                        </div>
+                    </form>
+                    
+                    </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>

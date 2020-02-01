@@ -1,0 +1,66 @@
+{{#if user.Correo}}  
+      <div class="container p-2">
+       
+       <img src="/Imagenes/error404.png" class="card-img-top" width='100' height='550'>
+        <a href="/profile" class="btn btn-primary "> Regresar al perfil </a>
+
+      </div>
+     
+      {{else if user.CedulaProfesional }}
+         <div class="container p-12">
+             <div class="row">
+                  <div class="col-md-12">
+                    <div class="card  text">
+                     <div class="card-body">
+                    <h3 style="text-align: left; color:cadetblue">Médico en turno</h3>
+                    <h5 style="text-align: left;">Nombre:{{user.NombreMedico}}</h5>
+                    <h3 style="text-align: left; color:cadetblue">Datos del paciente</h3>
+                    <div class="media-body">
+                    <h4>Número de seguro social:{{consulta.NSS}}</h4>
+                    <h4>Nombre:{{consulta.NombrePaciente}} {{consulta.ApellidoPaternoPaciente}} {{consulta.ApellidoMaternoPaciente}}  </h4>
+                    <h4>Fecha nacimiento:1998/04/10</h4>
+                    <h4>Género:<td>{{consulta.SexoPaciente}}</td></h4>
+                    <h4>Correo:{{consulta.CorreoElectronicoPaciente}}</h4>
+                    
+        <h4>edad:{{consulta.edad}}</h4>
+        <br>
+        <h3 style="text-align: center;">Diagnóstico determinado por el sistema</h3> 
+        <form action="/medicos/confirmarDiagnostico/{{consulta.NSS}}/{{user.CedulaProfesional}}" method="POST"> 
+        <div class="form-group">
+       
+      <select class="form-control" id="sel1" name="diagnostico">
+        <option  >{{links.diagnostico}} </option>
+        <option>Angina de pecho  </option>
+        <option>Cardiopatía Isquémica O Coronaría  </option>
+        <option>Arritmia</option>
+        <option>Insuficiencia Cardíaca</option>
+        <option>Hipertension Arterial</option>
+      </select>
+      <br>
+        
+        <div class="fo<rm-group">
+                   <h4> <label for="comment">Agregar recomendación:</label>
+                     <textarea class="form-control" rows="5" id="comment" name="Recomendacion"></textarea>
+                    </h4></div>
+         
+      </div> 
+      <div class="form-group">
+                            <button class="btn btn-success btn-block">Enviar formulario</button>
+                        </div>
+                    </form>                
+                     
+                     
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+      {{else if user.NSS}}
+      <div class="container p-2">
+       
+       <img src="/Imagenes/error404.png" class="card-img-top" width='100' height='550'>
+        <a href="/profileP" class="btn btn-primary "> Regresar al perfil </a>
+
+      </div>
+      {{/if}}

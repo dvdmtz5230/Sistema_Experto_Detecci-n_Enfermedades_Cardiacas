@@ -1,0 +1,108 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-11">
+       
+            <h3 align="center">Dr.{{user.NombreMedico}} {{user.ApellidoPaternoMedico}}</h3>  
+            <h4 align="center">Médico cardiólogo</h4>
+            <h6 align="left">Cédula:{{user.CedulaProfesional}}</h6>
+            <h6 align="left">Correo:{{user.CorreoElectronicoMedico}}</h6>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-11">
+                <div class="form-group">
+        <form action="/medicos/Receta/{{links.NSS}}" method="POST">
+            <table>
+ <tr>
+    <th>NSS:</th>
+    <td>{{links.NSS}}</td>
+     
+  </tr>
+  <tr>
+    <th> Nombre paciente:</th>
+   
+    <td> {{links.NombrePaciente}} {{links.ApellidoPaternoPaciente}} {{links.ApellidoMaternoPaciente}}</td>
+   
+      
+       </tr>
+  <tr>
+    <th> Edad:</th>
+    <td>{{links.edad}}</td>
+  </tr>
+  
+  <tr>
+    <th> Género:</th>
+    <td>{{links.SexoPaciente}}</td>
+  </tr>
+  <tr>
+    <th>Fecha:</th>
+    <td>{{links.fecha}}</td>
+    
+  </tr>
+  <tr>
+    <th>Diganostico:</th>
+    <td>{{linkss.diagnostico}}</td>
+     
+  </tr>
+  <tr>
+    <th>Peso:</th>
+    <td> <input type="text" class="form-control" name="peso" placeholder="ingrese peso en Kg del paciente"></td> 
+  </tr>
+   <tr>
+    <th>Estatura:</th>
+    <td> <input type="text" class="form-control" name="estatura" placeholder="ingrese estatura en mts del paciente"></td>
+  </tr>
+  <tr>
+    <th>Observaciones:</th>
+    <td><textarea  type="text rows="10" cols="40"" name="observaciones"></textarea></td>
+  </tr>
+  <tr>
+    <th>Medicamentos:</th>
+    <td><textarea  type="text rows="10" cols="40"" name="medicamentos"></textarea></td>
+  </tr>
+  <div class="form-group">
+  <input type="text" hidden name="NSS" class="form-control" value="{{links.NSS}}">
+  <input type="text" hidden name="fecha" class="form-control" value="{{links.fecha}}">
+  <input type="text" hidden name="diagnostico" class="form-control" value="{{linkss.diagnostico}}">
+  <input type="text" hidden name="CedulaProfesional" class="form-control" value="{{user.CedulaProfesional}}">
+  </div>
+</table> 
+<div class="form-group">
+  <button class="btn btn-success btn-block">Guardar</button>
+  <br>
+  <a href="/medicos/Pacientes/" class="btn btn-info">Regresar</a>
+ </div>
+</form>
+
+</div>
+                
+            </div>
+           
+            
+        </div>
+        
+        </div>
+    </div>
+</div>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+<h2>HTML Table</h2>
+
+ 

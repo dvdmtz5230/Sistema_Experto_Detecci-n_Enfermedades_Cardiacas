@@ -1,0 +1,496 @@
+
+    <div class="container p-4">
+
+    <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-11">
+
+     {{#if user.CedulaProfesional  }}
+     <h2>Datos del perfil del paciente</h2>
+     {{else if user.Correo }}
+     <h2>Datos del perfil del paciente</h2>
+     {{else if user.NSS }}
+     <h1>Mi perfil</h1>
+
+     {{/if}}
+     
+  <br>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#generales">Datos generales</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#Domicilio">Domicilio</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#contraseña">Cambiar contraseña</a>
+    </li>
+  </ul>
+  
+
+
+
+<div class="tab-content">
+    <div id="generales" class="container tab-pane active"><br>
+         <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-11">
+          
+    <br>
+    <h4>Datos generales:</h4>
+     <div class="container mt-3">
+    <h2>Paciente</h2>
+    
+    <div class="media border p-3">
+        <img src="/Imagenes/paciente.jfif" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:80px;">
+        <div class="media-body">
+        <h4>Número de seguro social:{{links.NSS}}</h4>
+        <h4>Nombre:{{links.NombrePaciente}} {{links.ApellidoPaternoPaciente}} {{links.ApellidoMaternoPaciente}}  </h4>
+         <h4>Fecha nacimiento:{{links.FechaNacimientoPaciente}}</h4>
+        <h4>Género:<td>{{links.SexoPaciente}}</td></h4>
+        <h4>Correo:{{links.CorreoElectronicoPaciente}}</h4>
+         
+        <h4>edad:{{links.edad}}</h4>
+        <h4>Diagnóstico: {{ABC.diagnostico}}</h4>
+         <h4 for="comment">Recomendación:</h4>
+         <textarea readonly class="form-control" rows="5" id="comment">{{ABC.Recomendacion}}  </textarea>
+
+        {{#if user.CedulaProfesional  }}
+         <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+            Editar paciente 
+          </button></td> 
+         {{else if user.Correo }}
+          <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+            Editar paciente 
+          </button></td>
+         {{else if user.NSS }}
+          <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+            Editar mis datos 
+          </button></td>
+          
+
+          {{/if}}
+       
+            {{#if user.CedulaProfesional  }}
+            <td>
+              <a href="/links/AgregarAF/{{links.NSS}}" class="btn btn-primary">
+                 Agregar Antecedentes famililiares
+              </a>
+            </td>
+            {{else if user.Correo }}
+
+           <td>
+             <a href="/links/AgregarAF/{{links.NSS}}" class="btn btn-primary">
+         Agregar Antecedentes famililiares
+             </a>
+           </td>
+           {{else if user.NSS }}
+            
+
+            {{/if}}
+           {{#if user.CedulaProfesional  }}
+            <td>
+              <a href="/links/FichaMEdica/{{links.NSS}}" class="btn btn-primary">
+                 Ver ficha médica
+              </a>
+            </td>
+            {{else if user.Correo }}
+
+           <td>
+             <a href="/links/FichaMEdica/{{links.NSS}}" class="btn btn-primary">
+                 Ver ficha médica
+             </a>
+           </td>
+           {{else if user.NSS }}
+            
+
+            {{/if}}
+            {{#if user.CedulaProfesional  }}
+            <td>
+              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DarBaja">
+          
+          Baja paciente
+          
+          </button>
+            </td>
+            {{else if user.Correo }}
+
+           <td>
+             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DarBaja">
+          
+           Baja paciente
+          
+          </button>
+           </td>
+           {{else if user.NSS }}
+            
+
+            {{/if}}
+         
+         </div>
+    </div>
+    </div>
+            </div>
+        </div> 
+    </div>
+    <!-- The Modal -->
+  <div class="modal" id="myModal2">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h2>Editar Médico</h2>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form action="/links/edit/{{linkss.CedulaProfesional}}" method="POST">
+
+                        <div class="form-group">
+                            <h5>Cédula:</h5>
+                            <input type="text" value="{{linkss.CedulaProfesional}}" class="form-control" name="CedulaProfesional" placeholder="Nombre">
+                        </div>
+
+                        <div class="form-group">
+                            <h5>Nombre:</h5>
+                            <input type="text" value="{{linkss.NombreMedico}}" class="form-control" name="NombreMedico" placeholder="Nombre">
+                        </div>
+                        <div class="form-group">
+                            <h5>Apellido paterno:</h5>
+                            <input type="text" value="{{linkss.ApellidoPaternoMedico}}" name="ApellidoPaternoMedico" class="form-control" placeholder="Apellido paterno">
+                        </div>
+                        <div class="form-group">
+                          <h5>Apellido materno:</h5>
+                            <input type="text" value="{{linkss.ApellidoMaternoMedico}}" class="form-control" name="ApellidoMaternoMedico" placeholder="Apellido Materno">
+                        </div>
+                        <div class="form-group">
+                            <h5>Correo:</h5> 
+                            <input type="email" name="CorreoElectronicoMedico" value="{{linkss.CorreoElectronicoMedico}}" class="form-control" placeholder="Correo">
+                        </div>
+                         
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block">Guardar cambios</button>
+                        </div>
+                    </form>
+                    
+                    </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+    <div id="Domicilio" class="container tab-pane fade"><br>
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-11">
+          
+
+            
+    <h4>Domicilio:</h4>
+    <div class="media border p-3">
+        <img src="/Imagenes/paciente.jfif" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:80px;">
+        <div class="media-body">
+        <h4>Ciudad:{{links.Ciudad}}</h4>
+        <h4>Estado:{{links.Estado}}</h4>
+        <h4>Calle:{{links.Calle}}</h4>
+        <h4>Colonia:{{links.Colonia}}</h4>
+        <h4>Municipio:{{links.Municipio}}</h4>
+        <h4>Numero Interior:{{links.NumeroInter}}</h4>
+        <h4>Numero Exterior:{{links.NumeroExt}}</h4>
+
+        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditarDom">
+         Editar Domicilio
+            </button></td>
+          </div>
+       </div>
+     </div>
+  </div> 
+</div>
+
+<div id="contraseña" class="container tab-pane fade"><br>
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-11">
+          
+
+          <form action="/links/editContraP/{{links.NSS}}" method="POST">
+         <div class="form-group">
+           <h4>Escriba su nueva contraseña</h4> 
+          <input type="text" class="form-control" name="Contra" placeholder="Contraseña nueva">
+          </div>
+
+          <div class="form-group">
+          <button class="btn btn-success btn-block">Guardar nueva contraseña</button>
+          </div>
+        </form>   
+       </div>
+     </div>
+  </div> 
+</div>
+
+
+   
+         <div class="container">
+
+  <!-- Button to Open the Modal -->
+  
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h1 class="modal-title">Editar paciente</h1>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form action="/links/editP/{{links.NSS}}" method="POST">
+                        <div class="form-group">
+                            <h4>Nombre paciente:</h4>
+                            <input type="text" value="{{links.NombrePaciente}}" class="form-control" name="NombrePaciente" placeholder="Nombre">
+                        </div>
+                        <div class="form-group">
+                            <h4>Apellido paterno paciente:</h4>
+                            <input type="text" value="{{links.ApellidoPaternoPaciente}}" class="form-control" name="ApellidoPaternoPaciente" placeholder="Apellido Paterno">
+                        </div>
+                        <div class="form-group">
+                            <h4>Apellido materno paciente:</h4>
+                            <input type="text" name="ApellidoMaternoPaciente" value="{{links.ApellidoMaternoPaciente}}" class="form-control" placeholder="Apellido Materno">
+                        </div>
+                        <div class="form-group">
+                            <h4>Género paciente:</h4>
+                            <input type="text" name="SexoPaciente" value="{{links.SexoPaciente}}" class="form-control" placeholder="Genero">
+                        </div>
+                        <div class="form-group">
+                            <h4>Correo electronico paciente:</h4>
+                            <input type="text" value="{{links.CorreoElectronicoPaciente}}" name="CorreoElectronicoPaciente" class="form-control" placeholder="email">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block">Guardar cambios</button>
+                        </div>
+                    </form>
+                    
+                  </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+   <div class="modal" id="EditarDom">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h1 class="modal-title">Editar Domicilio</h1>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form action="/links/DomEditP/{{links.idDomicilio}}" method="POST">
+                        <div class="form-group">
+                            <h4>Estado:</h4> 
+                            <input type="text" class="form-control" name="Estado" placeholder="Estado" value="{{links.Estado}}">
+                        </div>
+                        <div class="form-group">
+                            <h4>Ciudad:</h4> 
+                            <input type="text" name="Ciudad" class="form-control" placeholder="Ciudad" value="{{links.Ciudad}}">
+                        </div>
+                        <div class="form-group">
+                            <h4>Municipio:</h4> 
+                            <input type="text" class="form-control" name="Municipio" placeholder="Municipio" value="{{links.Municipio}}">
+                        </div>
+                        <div class="form-group">
+                            <h4>Colonia:</h4> 
+                            <input type="text" name="Colonia" class="form-control" placeholder="Colonia" value="{{links.Colonia}}">
+                        </div>
+                        <div class="form-group">
+                          <h4>Calle:</h4> 
+                            <input type="text" name="Calle" class="form-control" placeholder="Calle" value="{{links.Calle}}">
+                        </div>
+                        <div class="form-group">
+                            <h4>Numero Externo:</h4> 
+                            <input type="text" name="NumeroExt" class="form-control" placeholder="Numero Externo" value="{{links.NumeroExt}}">
+                        </div>
+                        <div class="form-group">
+                           <h4>Numero Interno:</h4> 
+                            <input type="text" name="NumeroInter" class="form-control" placeholder="Numero Interno" value="{{links.NumeroInter}}">
+                        </div>
+                         
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block">Guardar cambios</button>
+                        </div>
+                    </form>
+                    </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+        
+                </div>
+            </div>
+
+    </div>
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-11">
+          <h2>Antecedentes</h2>
+  <br>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#home">Antecedentes famililiares</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#">Historial clinico</a>
+    </li>
+  </ul>
+
+   <!-- Tab panes -->
+  <div class="tab-content">
+    <div id="home" class="container tab-pane active"><br>
+         <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-11">
+          <h1>Antecedentes famililiares</h1>
+
+            <input class="form-control form-control-md" id="myInput" type="text" placeholder="Buscar...">
+            <br>
+                <table class="table table-striped table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                             {{#if user.CedulaProfesional}}<th></th>{{/if}}
+                            
+                            {{#if user.Correo}}<th></th>{{/if}}
+                            {{#if user.Correo}}<th></th> {{/if}} 
+                            <th>Nombre</th>
+                            <th>Género</th>
+                            <th>Parentesco</th>
+                            <th>Fecha de nacimiento</th>
+                            <th>Padecimiento</th>
+                            </tr>
+                    </thead>
+                    <tbody id="myTable">
+                        {{#each link}}
+                        <tr>
+                            
+                            <td><a href="/links/EditarAF/{{this.IDAF}}/{{this.NSS}}" class="btn btn-success">Editar</a></td>  
+                              
+                             
+                            <td>{{this.NombreAF}} {{this.ApellidoAPAF}} {{this.ApellidoAMAF}}</td>
+                            <td>{{this.GeneroAF}}</td> 
+                            <td>{{this.Parentesco}}</td>
+                            <td>{{this.FechaNAF}}</td>
+                            <td>{{this.Padecimiento}}</td>
+                            {{/each}}
+                        </tr>                    
+                    </tbody>
+                </table>
+            </div>
+        </div> 
+    </div>
+    <div id="menu1" class="container tab-pane fade"><br>
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-11">
+          <h1>Historial clinico</h1>
+
+            <input class="form-control form-control-md" id="myInput" type="text" placeholder="Buscar...">
+            <br>
+                <table class="table table-striped table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                            <th>Clinica</th>
+                            <th>Estado</th>
+                            <th>Observaciones</th>
+                            <th>Médico de turno</th>
+                            </tr>
+                    </thead>
+                    <tbody id="myTable">
+                        {{#each linkss}}
+                        <tr>
+                            <td>{{this.fecha}} </td>
+                            <td>{{this.Hora}}</td> 
+                            <td>{{this.Clinica}}</td>
+                            <td>{{this.Estado}}</td>
+                            <td>{{this.Observaciones}}</td>
+                            <td>{{this.Cedula}}</td>
+                             
+                        </tr>     
+                        {{/each}}               
+                    </tbody>
+                </table>
+            </div>
+        </div> </div>
+    <div id="menu2" class="container tab-pane fade"><br>
+ 
+  
+</div></div>
+  </div>
+</div>
+            
+        </div>
+    </div>
+
+        </div>
+    </div>
+</div>
+
+ 
+  <!-- The Modal -->
+  <div class="modal" id="DarBaja">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h2>¿Seguro que desea eliminar el paciente?</h2>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form action="/links/deleteP/{{links.NSS}}" method="Get">
+
+                         
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block">Si,eliminar</button>
+                        </div>
+                    </form>
+                    
+                    </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>

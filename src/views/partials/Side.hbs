@@ -1,0 +1,95 @@
+<style>
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+ 
+.sidebar a.active {
+  background-color: #5fa840;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+</style>
+{{#if user.Correo}}
+<div class="sidebar">
+  <a class="active">Administrador:<br>{{user.Correo}}</a>
+  <a href="/profile">Inicio</a>
+  <a href="/links/info">Información que cura</a>
+  <a href="/links">Médicos</a>
+  <a href="/links/Pacientes">Pacientes</a>
+  <a href="/reportes/GenRepo"> Reportes </a>
+  <a href="/links/respaldo">Respaldos</a>
+</div>
+{{else if user.CedulaProfesional}}
+<div class="sidebar">
+  <a class="active">Médico:<br>{{user.NombreMedico}} {{user.ApellidoPaternoMedico}}</a>
+  <a href="/profileM">Inicio</a>
+  <a href="/medicos/Pacientes">Pacientes</a>
+  <a href="/medicos/Citas">Citas</a>
+  <a href="/reportes/GenRepo"> Reportes </a>
+  <a href="/links/verMedico2/{{user.CedulaProfesional}}">Configurar perfil</a>
+</div>
+{{else if user.NSS}}
+<div class="sidebar">
+  <a class="active">Paciente:<br>{{user.NombrePaciente}} {{user.ApellidoPaternoPaciente}}</a>
+  <a href="/pacientes/perfil/{{user.NSS}}">citas</a>
+  <a href="/links/FichaMEdica/{{user.NSS}}">Fichas médicas</a>
+  <a href="/pacientes/verContacto/{{user.NSS}}">Ver contacto</a>
+  <a href="/pacientes/Forum">Foro</a>
+  <a href="/links/verPerfilP/{{user.NSS}}">Configurar perfil</a>
+</div>
+ 
+{{else if user.CorreoC}}
+<div class="sidebar">
+  <a class="active">Familiar:<br>{{user.NombreC}} {{user.ApellidoPC}}</a>
+  <a href="/pacientes/perfil/{{user.NSS}}">citas</a>
+  <a href="">Recomendaciones</a>
+  <a href="/pacientes/verContacto/{{user.NSS}}">Ver contacto</a>
+  <a href="/pacientes/Forum">Foro</a>
+  <a href="/links/verPerfilP/{{user.NSS}}">Configurar perfil</a>
+</div>
+{{/if}}

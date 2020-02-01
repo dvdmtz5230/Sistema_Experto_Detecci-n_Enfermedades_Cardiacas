@@ -1,0 +1,31 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h3>Inicia sesión como Médico</h3>
+                    <img src="/Imagenes/login2.png" class="card-img-top mx-auto m-2 rounded-circle w-60">
+                </div>
+                <div class="card-body">
+                    <form action="/signinM" method="post">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="CedulaProfesional" placeholder="Ingrese Cédula " required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="Contra" placeholder="Ingrese Contraseña" required>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block">Inicia sesión</button>
+                        </div>
+                        
+                        <a href="/signin" class="btn btn-block btn-secondary " role="button" >Ingresa como Administrador</a>
+                        <p></p>
+                        <a href="/signinP" class="btn btn-block btn-secondary" role="button">Ingresa como Paciente</a>
+                         
+                    </form>
+                     
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

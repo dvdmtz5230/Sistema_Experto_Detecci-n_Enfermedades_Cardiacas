@@ -1,0 +1,29 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/links/editP/{{links.NSS}}" method="POST">
+                        <div class="form-group">
+                            <input type="text" value="{{links.NombrePaciente}}" class="form-control" name="NombrePaciente" placeholder="Nombre">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" value="{{links.CorreoElectronicoPaciente}}" name="CorreoPaciente" class="form-control" placeholder="email">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" value="{{links.ApellidoPaternoPaciente}}" class="form-control" name="ApellidoPaternoPaciente" placeholder="Apellido Paterno">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="ApellidoMaternoPaciente" value="{{links.ApellidoMaternoPaciente}}" class="form-control" placeholder="Apellido Materno">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block">Save</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

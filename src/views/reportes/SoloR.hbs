@@ -1,0 +1,17 @@
+<html>
+    <body>
+        <h1 style="text-align: center;">Paciente</h1>
+        {{#each link}}
+        <p> NSS: {{this.NSS}}<br>
+            Nombre del paciente: {{this.NombrePaciente}} {{this.ApellidoPaternoPaciente}} {{this.ApellidoMaternoPaciente}}<br>
+            Género: {{this.SexoPaciente}}<br>
+            Edad: {{this.Edad}}<br>
+        </p>
+        <h3>Contacto</h3>
+        <p>
+            Nombre: {{this.NombreC}} {{this.ApellidoPC}} {{this.ApellidoMC}}<br>
+            Telefono: {{this.Telefono}}
+        </p>
+        {{/each}}
+    </body>
+</html>

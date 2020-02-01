@@ -1,0 +1,89 @@
+<div class="container p-5">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-11">
+            <h2>Información Diaria</h2>
+            <p>Introduce Información importante</p>
+            <div class="media border p-3">
+                <div class="media-body FORM-CONTROL">
+                    <form action="/links/info" method="POST">
+                        <input type="text" name="idPrevencion" hidden value="0">
+                        <label>Titulo</label>
+                        <input class="form-control" required name="titulo" placeholder="Dia de los ejemplos..." type="text"><br>
+                        <label>Publicación:</label>
+                        <textarea class="form-control" rows="4" cols="50" name="info" placeholder="Escribe algo aquí" required></textarea><br>
+                        <input name="fuente" class="form-control" required type="text" placeholder="Instituto del ejemplo, http://ejemplo.com/noticia/"><br>
+                        <button class="btn btn-outline-success">Comentar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-11">
+            <div class="container mt-3">
+                <h2>Publicaciones anteriores</h2>
+                <p>Aquí puedes ver, editar y eliminar publicaciones anteriores que han sido publicadas</p>
+                {{#each consulta}}
+                    <div class="media border p-3">
+                        <div class="media-body mt-3">
+                            <h4>{{this.titulo}}</h4>
+                            <p>{{this.info}}</p>  
+                            <p  type="text"style="text-align: right; link"><small><i>{{this.fuente}}<br> {{this.fecha}}</i></small></p>    
+                        </div>
+                        <td><a href="/links/EditR/{{this.idPrevencion}}" class="btn btn-success">edit </a></td>
+                            
+                    </div><br>
+                {{/each}}
+                
+
+
+                    
+
+
+
+
+                    <!--Modal eliminar-->
+                    <div class="modal" id="myModaldelete">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h3 class="modal-title">Confirmación de eliminación</h3>
+                                    <button type="button" class="close" data-dismiss="modal">×</button>
+                                </div> 
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    ¿Estas seguro de querer eliminar la publicación mostrada?<br>
+                                    <form action="/links/deletePrev" method="POST">
+                                        <div class="form-group">
+                                            <input type="text" value="{{this.titulo}}" class="form-control" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea type="text" rows="4" cols="50" class="form-control" readonly>{{this.info}}</textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" value="{{this.fuente}}" class="form-control" readonly>
+                                            <input type="text" name="idPrevencion" value="{{this.idPrevencion}}" hidden>
+                                        </div>
+                                        <div class="form-group">
+                                            <button class="btn btn-success btn-block">Confirmar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                                </div>
+                            </div><!--modal content-->
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

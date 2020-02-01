@@ -1,0 +1,73 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                     <div class="modal-body">
+                                    <form action="/links/editPrev" method="POST">
+                                        <div class="form-group">
+                                            <h4>Encabezado</h4>
+                                            <input type="text" value="{{consulta.titulo}}" class="form-control" name="titulo" placeholder="Nombre">
+                                        </div>
+                                        <div class="form-group">
+                                            <h4>Contenido</h4>
+                                            <textarea type="text" rows="4" cols="50" name="info" class="form-control">{{consulta.info}}</textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <h4>Fuente</h4>
+                                            <input type="text" name="fuente" value="{{consulta.fuente}}" class="form-control">
+                                            <input type="text" name="idPrevencion" value="{{consulta.idPrevencion}}" hidden>
+                                        </div>
+                                        <div class="form-group">
+                                            <button class="btn btn-success btn-block">Editar</button>
+                                            <a href="/links/info" class="btn btn-info btn-block">Cancelar</a>
+                                            <br>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaldelete">
+                                             Eliminar
+                                            </button>
+                                             
+                                        </div>
+                                    </form>
+                                </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--Modal eliminar-->
+                    <div class="modal" id="myModaldelete">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h3 class="modal-title">Confirmación de eliminación</h3>
+                                    <button type="button" class="close" data-dismiss="modal">×</button>
+                                </div> 
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    ¿Estas seguro de querer eliminar la publicación mostrada?<br>
+                                    <form action="/links/deletePrev" method="POST">
+                                        <div class="form-group">
+                                            <input type="text" value="{{consulta.titulo}}" class="form-control" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea type="text" rows="4" cols="50" class="form-control" readonly>{{consulta.info}}</textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" value="{{consulta.fuente}}" class="form-control" readonly>
+                                            <input type="text" name="idPrevencion" value="{{consulta.idPrevencion}}" hidden>
+                                        </div>
+                                        <div class="form-group">
+                                            <button class="btn btn-success btn-block">Confirmar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                                </div>
+                            </div><!--modal content-->
+                        </div>
+                    </div>

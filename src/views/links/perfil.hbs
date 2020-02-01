@@ -1,0 +1,55 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-11">
+            <h1>Médicos 
+            <a href="/links/add" class="btn btn-primary m-4"> Agregar Médico </a> </h1>
+            <input class="form-control form-control-md" id="myInput" type="text" placeholder="Buscar..."><br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1"></div>
+            <div class="col-md-11">
+                <table class="table table-striped table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th></th>
+                             
+                             
+                            <th>Cédula  Profesional</th>
+                            <th>Nombre</th>
+                            <th>Fecha de nacimiento</th>
+                            <th>Género</th>
+                            <th>Correo</th>
+                            </tr>
+                    </thead>
+                    <tbody id="myTable">
+                        {{#each consultados}}
+                        <tr>
+                            <td><a href="/links/verMedico/{{this.CedulaProfesional}}" class="btn btn-success">ver </a></td>
+                            
+                             
+                            <td>{{this.CedulaProfesional}}</td>
+                            <td>{{this.NombreMedico}} {{this.ApellidoPaternoMedico}} {{this.ApellidoMaternoMedico}}</td>
+                            <td>{{this.FechaNacimientoMedico}}</td>
+                            <td>{{this.SexoMedico}}</td>
+                            <td>{{this.CorreoElectronicoMedico}}</td>{{/each}}
+                            {{#each cone}}<td>{{this.Municipio}}</td>{{/each}}
+                        </tr>                    
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+<script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>

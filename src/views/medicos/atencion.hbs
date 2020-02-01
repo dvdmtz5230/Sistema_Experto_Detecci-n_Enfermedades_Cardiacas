@@ -1,0 +1,76 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-11">
+            <h3 align="center">Dr.{{user.NombreMedico}} {{user.ApellidoPaternoMedico}}</h3>  
+            <h4 align="center">Médico cardiólogo</h4>
+            <h6 align="left">Cédula:{{user.CedulaProfesional}}</h6>
+            <h6 align="left">Correo:{{user.CorreoElectronicoMedico}}</h6>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-11">
+            <div class="form-group">
+                <table>
+                    <tr>
+                        <th>NSS:</th>
+                            <td>{{links.NSS}}</td>
+                    </tr>
+                    <tr>
+                        <th> Nombre paciente:</th>
+                        <td> {{links.NombrePaciente}} {{links.ApellidoPaternoPaciente}} {{links.ApellidoMaternoPaciente}}</td>
+                    </tr>
+                    <tr>
+                        <th> Edad:</th>
+                        <td>{{links.edad}}</td>
+                    </tr> 
+                    <tr>
+                        <th> Género:</th>
+                        <td>{{links.SexoPaciente}}</td>
+                    </tr>
+                    <tr>
+                        <th>Fecha:</th>
+                        <td>{{links.fechas}}</td>                      
+                    </tr>
+                    <tr>
+                        <form action="/medicos/atencion/{{links.idCitas}}" method="POST">
+                        <th>Observaciones:</th>
+                        <td><textarea required  type="text rows="10" cols="40"" name="Observaciones"></textarea></td>
+                    </tr>
+                    <div class="form-group">
+                        <input type="text" hidden name="Cedula" class="form-control" value="{{user.CedulaProfesional}}">
+                        <input type="text" hidden name="Estado" class="form-control" value="Finalizada">
+                        <input type="text" hidden name="NSS" class="form-control" value="{{links.NSS}}">
+                    </div>
+                </table> 
+                <div class="custom-control custom-switch">    
+                        <input type="checkbox" class="custom-control-input" id="switch1" name="nuevo">
+                        <label class="custom-control-label" for="switch1">¿Agendar otra cita?</label>
+                    </div><br>
+                <div class="form-group">
+                    <button class="btn btn-success btn-block">Seguimiento de la cita</button>
+                </div>
+                </form>
+            </div>    
+        </div>        
+    </div>
+</div>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+<h2>HTML Table</h2>

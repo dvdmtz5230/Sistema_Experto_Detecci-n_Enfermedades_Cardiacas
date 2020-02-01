@@ -1,0 +1,167 @@
+{{#if user.Correo}}  
+      <div class="container p-2">
+       
+       <img src="/Imagenes/error404.png" class="card-img-top" width='100' height='550'>
+        <a href="/profile" class="btn btn-primary "> Regresar al perfil </a>
+
+      </div>
+     
+      {{else if user.CedulaProfesional }}
+         <div class="container p-4">
+             <h3>Diagnosticar paciente</h3>
+               
+    <div class="media border p-3">
+        <img src="/Imagenes/paciente.jfif" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:80px;">
+        <div class="media-body">
+        <h4>Número de seguro social:{{consulta.NSS}}</h4>
+        <h4>Nombre:{{consulta.NombrePaciente}} {{consulta.ApellidoPaternoPaciente}} {{consulta.ApellidoMaternoPaciente}}  </h4>
+        <h4>Fecha nacimiento:1998/04/10</h4>
+        <h4>Género:<td>{{consulta.SexoPaciente}}</td></h4>
+        <h4>Correo:{{consulta.CorreoElectronicoPaciente}}</h4>
+         
+        <h4>edad:{{consulta.edad}}</h4>
+        <br>
+        <br>
+      </div> 
+       
+    </div> 
+        
+        <h3>Favor de seleccionar los síntomas que el paciente presente</h3>
+        <form action="/medicos/diagnosticar/{{consulta.NSS}}" method="POST"> 
+             <div class="row">
+                  
+                  <div class="col-md-4 ">
+                      <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input" id="DificultadParaRespirar1" name="DificultadParaRespirar1">
+                       <label class="custom-control-label" for="DificultadParaRespirar1">Dificultad Para Respirar</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input" id="DolorDePecho1" name="DolorDePecho1">
+                       <label class="custom-control-label" for="DolorDePecho1">Dolor De Pecho</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input" id="Mareos1" name="Mareos1">
+                       <label class="custom-control-label" for="Mareos1">Mareos</label>
+                    </div>
+                    
+                    <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input" id="Taquicardia1" name="Taquicardia1">
+                       <label class="custom-control-label" for="Taquicardia1">Taquicardia</label>
+                    </div> 
+
+                    <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input" id="Nausea1" name="Nausea1">
+                       <label class="custom-control-label" for="Nausea1">Náusea</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input" id="Vomitos1" name="Vomitos1">
+                       <label class="custom-control-label" for="Vomitos1">Vómitos</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input" id="CambiosdeVision1" name="CambiosdeVision1">
+                       <label class="custom-control-label" for="CambiosdeVision1">Cambios de Visión</label>
+                    </div>   
+
+                    
+                 
+                    </div>
+                    <div class="col-md-4 ">
+                    
+                    <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input" id="Fatiga1" name="Fatiga1">
+                       <label class="custom-control-label" for="Fatiga1">Fatiga</label>
+                    </div> 
+
+                     <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input" id="Sudoracion1" name="Sudoracion1">
+                       <label class="custom-control-label" for="Sudoracion1">Sudoración</label>
+                    </div> 
+
+                     <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input" id="hinchazondelaspiernasYtobillos1" name="hinchazondelaspiernasYtobillos1">
+                       <label class="custom-control-label" for="hinchazondelaspiernasYtobillos1">hinchazón de las piernas y tobillos</label>
+                    </div>  
+
+                    <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input" id="Desmayo1" name="Desmayo1">
+                       <label class="custom-control-label" for="Desmayo1">Desmayo</label>
+                    </div>  
+
+                     <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input" id="Palidez1" name="Palidez1">
+                       <label class="custom-control-label" for="Palidez1">Pálidez</label>
+                    </div>  
+
+                     <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input" id="abdomeninflamado1" name="abdomeninflamado1">
+                       <label class="custom-control-label" for="abdomeninflamado1"> Abdomen inflamado</label>
+                    </div>  
+
+                     <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input" id="HczDAdmenLiq1" name="HczDAdmenLiq1">
+                       <label class="custom-control-label" for="HczDAdmenLiq1"> Hinchazón del abdomen debido a la acomulación de líquido</label>
+                    </div>   
+                    
+                  </h5>
+                    </div>
+                    <div class="col-md-4 "> 
+                    <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input" id="SangradoNasal1" name="SangradoNasal1">
+                       <label class="custom-control-label" for="SangradoNasal1"> Sangrado Nasal</label>
+                    </div> 
+
+                    <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input" id="DolorDeCabeza1" name="DolorDeCabeza1">
+                       <label class="custom-control-label" for="DolorDeCabeza1"> Dolor de Cabeza</label>
+                    </div> 
+
+                    <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input" id="ZumbidoenlosOidos1" name="ZumbidoenlosOidos1">
+                       <label class="custom-control-label" for="ZumbidoenlosOidos1"> Zumbidos en los oídos</label>
+                    </div> 
+
+                    <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input" id="somnolencia1" name="somnolencia1">
+                       <label class="custom-control-label" for="somnolencia1"> Somnolencia</label>
+                    </div>  
+
+                     <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input" id="vertigo1" name="vertigo1">
+                       <label class="custom-control-label" for="vertigo1"> vértigo</label>
+                    </div> 
+                     
+                    <input type="hidden" name="idSintomas" value="0"/>
+                    
+
+                     <br> 
+             
+                    
+                     
+                     
+                     
+                 
+                     
+                  </h5>
+                   </div>
+
+                 
+
+          </div>
+                    <div class="form-group">
+                            <button class="btn btn-success">Pre-diagnóstico</button>
+                            <a href="/medicos/Pacientes" class="btn btn-danger">Cancelar</a>
+                        </div>
+                    </form>
+</div>
+      {{else if user.NSS}}
+      <div class="container p-2">
+       
+       <img src="/Imagenes/error404.png" class="card-img-top" width='100' height='550'>
+        <a href="/profileP" class="btn btn-primary "> Regresar al perfil </a>
+
+      </div>
+      {{/if}}

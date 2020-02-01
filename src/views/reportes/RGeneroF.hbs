@@ -1,0 +1,21 @@
+<html>
+    <body>
+        <h1 style="text-align: center;">Pacientes por Género Femenino</h1>
+        <table style="align-content: center;">
+            <tr>
+                <th>NSS</th>
+                <th>Nombre del paciente</th>
+                <th>Género</th>
+                <th>edad</th>
+            </tr>
+            {{#each link}}
+            <tr>
+                <td>{{this.NSS}}</td>
+                <td>{{this.NombrePaciente}} {{this.ApellidoPaternoPaciente}} {{this.ApellidoMaternoPaciente}}</td>
+                <td>{{this.SexoPaciente}}</td>
+                <td>{{this.FechaNacimientoPaciente}}</td>
+            </tr>
+            {{/each}}
+        </table>
+    </body>
+</html>

@@ -1,0 +1,33 @@
+ 
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-1"></div>
+            <div class="col-md-11">
+                <h3> Agendar Cita</h3>
+                <div class="form-group">
+                   <input class="form-control" value="{{consulta.NombrePaciente}}{{consulta.ApellidoPaternoPaciente}}"> 
+                </div>
+                <form action="/medicos/AgendarCita" method="POST">
+                    <div class="form-group">
+                        <input required type="date" class="form-control" name="fecha">
+                    </div>
+                    <div class="form-group">
+                        <input required type="time" class="form-control" name="Hora"> 
+                    </div>
+                    <div class="form-group">
+                        <input required type="text" class="form-control" name="Clinica" placeholder="Clinica de procedencia">
+                        <input type="text" class="form control" name="Estado" value="Pendiente" hidden>
+                    </div>
+                    <div>
+                        <input type="text" name="idCitas" value="0" hidden>
+                        <input type="text" class="form-control" name="NSS" value="{{consulta.NSS}}" hidden>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-outline-success btn-block">Agendar</button>
+                         <br>
+                        <a href="/medicos/Pacientes" class="btn btn-info">Regresar</a>
+                    </div>
+                </form>
+            </div>
+    </div>
+</div>

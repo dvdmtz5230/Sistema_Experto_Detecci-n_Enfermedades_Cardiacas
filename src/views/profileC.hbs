@@ -1,0 +1,43 @@
+
+ 
+{{#if user.Correo}}  
+      <div class="container p-2">
+       
+       <img src="/Imagenes/error404.png" class="card-img-top" width='100' height='550'>
+        <a href="/profile" class="btn btn-primary "> Regresar al perfil </a>
+
+      </div>
+ {{else if user.CorreoC}}
+       <div class="container p-4">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h3>Bienvenido usuario: Cédula:{{user.CorreoC}}</h3>
+                    <h4>Nombre:{{user.CorreoC}}</h4>
+                    <a href="/medicos/Pacientes" class="btn btn-primary m-4">
+                        Agregar pacientes    
+                    </a>
+                     
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+     
+      {{else if user.CedulaProfesional }}
+          <div class="container p-2">
+       
+       <img src="/Imagenes/error404.png" class="card-img-top" width='100' height='550'>
+        <a href="/profileM" class="btn btn-primary "> Regresar al perfil </a>
+
+      </div>
+      {{else if user.NSS}}
+    <div class="container p-2">
+       
+       <img src="/Imagenes/error404.png" class="card-img-top" width='100' height='550'>
+        <a href="/profileP" class="btn btn-primary "> Regresar al perfil </a>
+  
+
+      {{/if}}

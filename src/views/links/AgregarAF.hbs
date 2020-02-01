@@ -1,0 +1,123 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-11">
+            <h3 align="center">Dr.{{user.NombreMedico}} {{user.ApellidoPaternoMedico}}</h3>  
+            <h4 align="center">Registro de antecedente familiar</h4>
+            <h6 align="left">Cédula profesional:{{user.CedulaProfesional}}</h6>
+            <h6 align="left">Correo:{{user.CorreoElectronicoMedico}}</h6>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-11">
+          <div class="form-group">
+            <form action="/links/AgregarAF/{{links.NSS}}" method="POST">
+              <table>
+                <tr>
+                  <th>NSS:</th>
+                  <td>{{links.NSS}}</td>              
+                </tr>
+                <tr>
+                  <th> Nombre paciente:</th>
+                  <td> {{links.NombrePaciente}} {{links.ApellidoPaternoPaciente}} {{links.ApellidoMaternoPaciente}}</td>
+                </tr>
+                <tr>
+                  <th> Edad:</th>
+                  <td>{{links.edad}}</td>
+                </tr>
+                <tr>
+                  <th> Género:</th>
+                  <td>{{links.SexoPaciente}}</td>
+                </tr>
+                <tr>
+                  <th>Diganóstico:</th>
+                  <td>{{ABC.diagnostico}}</td>
+                </tr>
+              </table>
+              <div class="form-group">
+                <input type="text" hidden name="NSS" class="form-control" value="{{links.NSS}}">
+              </div>
+          <div><br>
+          <h4>Datos Generales del Familiar</h4>
+        </div>
+        <div class="form-group">
+
+     <input required type="text" class="form-control" name="NombreAF" placeholder="Nombre">
+    </div>
+    
+    <div class="form-group">
+     <input required type="text" class="form-control" name="ApellidoAPAF" placeholder="Apellido Paterno">
+    </div>
+    <div class="form-group">
+     <input required type="text" name="ApellidoAMAF" class="form-control" placeholder="Apellido Materno">
+    </div>
+    <div class="form-group">
+     <input required type="date" name="FechaNAF" class="form-control" placeholder="Fecha Nacimiento">
+    </div>
+    <div class="form-group">
+     
+     <label for="sel1">Selecione Género:</label>
+      <select required class="form-control" id="sel1" name="GeneroAF">
+        <option selected disabled>Selecione Género</option>
+        <option>Masculino</option>
+        <option>Femenino</option>
+        <option>Indefinido</option>
+      </select>
+      
+    </div>
+    <div class="form-group">
+     <input required type="text" name="Padecimiento" class="form-control" placeholder="Padecimiento">
+    </div>
+     <div class="form-group">
+      
+     <label for="sel1">Parentesco:</label>
+      <select required class="form-control" id="sel1" name="Parentesco">
+        <option selected disabled>Selecione Parentesco</option>
+        <option>Hermano/a</option>
+        <option>Tío/a</option>
+        <option>Abuelo/a</option>
+        <option>Primo/a</option>
+        <option>Padre</option>
+        <option>Madre</option>
+      </select>
+    </div>
+<div class="form-group">
+  <button class="btn btn-success btn-block">Guardar antecedente familiar</button>
+  <br>
+   <a href="/links/verPerfilP/{{links.NSS}}" class="btn btn-info">Regresar</a>
+ </div>
+</form>
+
+</div>
+                
+            </div>
+           
+            
+        </div>
+        
+        </div>
+    </div>
+</div>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+<h2>HTML Table</h2>
+
+ 
+
+ 

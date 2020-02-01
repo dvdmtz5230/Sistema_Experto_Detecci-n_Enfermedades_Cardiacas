@@ -1,0 +1,58 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <H2>Formulario nuevo paciente</H2>
+                    <form action="/links/addP" method="POST">
+                        <div class="form-group">
+                            <h5>Nombre paciente:</h5>
+                            <input required type="text" class="form-control" name="NombrePaciente" placeholder="Nombre">
+                        </div>
+                        <div class="form-group">
+                            <H5>Correo:</h5>
+                            <input required type="text" name="CorreoElectronicoPaciente" class="form-control" placeholder="Correo">
+                        </div>
+                        <div class="form-group">
+                            <H5>Apellido paterno:</H5>
+                            <input required type="text" class="form-control" name="ApellidoPaternoPaciente" placeholder="Apellido Paterno">
+                        </div>
+                        <div class="form-group">
+                            <H5>Apellido materno:</H5>
+                            <input required type="text" name="ApellidoMaternoPaciente" class="form-control" placeholder="Apellido Materno">
+                        </div>
+                        <div class="form-group">
+                            <H5>NSS:</H5>
+                            <input required type="text" name="NSS" class="form-control" placeholder="NSS ">
+                        </div>
+                        <div class="form-group">
+                            <H5>Fecha nacimiento:</H5>
+                            <input required type="date" name="FechaNacimientoPaciente" class="form-control" placeholder="Fecha Nacimiento">
+                        </div>
+                       
+                         <div class="form-group">
+     
+                        <label for="sel1">Selecione Género:</label>
+                         <select required class="form-control" id="sel1" name="SexoPaciente">
+                          <option selected disabled>Seleccione Género</option>
+                          <option>Masculino</option>
+                          <option>Femenino</option>
+                          <option>Indefinido</option>
+      </select>
+      
+    </div>
+                        <div class="form-group">
+                            <H5>Contraseña:</H5>
+                            <input required type="text" name="Contra" class="form-control" placeholder="Contraseña">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block">Continuar</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,48 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/links/Dom" method="POST">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="IdDomicilio" value="0" hidden>
+                            <H5>Estado:</H5>
+                            <input type="text" class="form-control" name="Estado" placeholder="Estado">
+                        </div>
+                        <div class="form-group">
+                            <H5>Ciudad:</H5>
+                            <input type="text" name="Ciudad" class="form-control" placeholder="Ciudad">
+                        </div>
+                        <div class="form-group">
+                            <H5>Municipio:</H5>
+                            <input type="text" class="form-control" name="Municipio" placeholder="Municipio">
+                        </div>
+                        <div class="form-group">
+                            <H5>Colonia:</H5>
+                            <input type="text" name="Colonia" class="form-control" placeholder="Colonia">
+                        </div>
+                        <div class="form-group">
+                            <H5>Calle:</H5>
+                            <input type="text" name="Calle" class="form-control" placeholder="Calle">
+                        </div>
+                        <div class="form-group">
+                            <H5>Número Externo:</H5>
+                            <input type="text" name="NumeroExt" class="form-control" placeholder="Número Externo">
+                        </div>
+                        <div class="form-group">
+                            <H5>Número Interno:</H5>
+                            <input type="text" name="NumeroInter" class="form-control" placeholder="Número Interno">
+                        </div>
+                        <div class="form-group">
+                            <input  hidden type="text" name="IDUsuario" value= "{{IDUsuario}}" class="form-control" placeholder="Matricula o NSS">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block">Guardar registro</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

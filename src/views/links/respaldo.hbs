@@ -1,0 +1,48 @@
+<div class="container mt-5">
+  <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-11">
+            <h2>Respaldo de la base de datos</h2>
+            <div class="">
+                <table class="table table-bordered">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Realizar respaldo (Backup)</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <p>La copia de seguridad, támbien llamada respaldo o backup, 
+                                   se refiere a la copia de seguridad de archivos fisicos o 
+                                   virtuales o bases de datos a un sitio secundario para su 
+                                   preservación en caso de la falla en el equipo u alguna catastrofe.
+                                </p>
+                            </td>
+                            <td>
+                                <form action="/links/respaldo" method="POST">
+                                    <button class="btn btn-outline-dark">Realizar respaldo</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="table-primary">Restaurar respaldo/backup</td>
+                            <td class="table-primary"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Restaurar un backup de la base de datos</p>
+                            </td>
+                            <td>
+                                <form action="/links/importar" method="POST">
+                                    <button class="btn btn-outline-primary"> Restaurar </button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
