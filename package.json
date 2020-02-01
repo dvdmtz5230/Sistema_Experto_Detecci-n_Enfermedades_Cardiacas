@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/"
+    "dev": "nodemon src/"
   },
   "keywords": [],
   "author": "",
@@ -34,7 +34,7 @@
     "pu": "^3.1.0",
     "timeago.js": "^4.0.0-beta.2"
   },
-  "start": {
+  "devDependencies": {
     "bcrypt": "^3.0.6",
     "bower": "^1.8.8",
     "mysql-import": "^3.0.6",
