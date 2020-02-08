@@ -283,7 +283,7 @@ router.get('/verPerfilP/:NSS', async (req,res)=>{
      
        
    await pool.query('SET lc_time_names = "es_ES"');
-    const enlace2 = await pool.query('SELECT  NSS,IDAF,NombreAF,ApellidoAPAF,GeneroAF,Parentesco,Padecimiento,ApellidoAMAF,DATE_FORMAT(FechaNAF,"%d de %M de %Y") as FechaNAF from AntecedentesF WHERE NSS = ?',[NSS]);
+    const enlace2 = await pool.query('SELECT  NSS,IDAF,NombreAF,ApellidoAPAF,GeneroAF,Parentesco,Padecimiento,ApellidoAMAF,DATE_FORMAT(FechaNAF,"%d de %M de %Y") as FechaNAF from antecedentesF WHERE NSS = ?',[NSS]);
     await pool.query('SET lc_time_names = "es_ES"');
     const enlace3 = await pool.query('SELECT DATE_FORMAT(fecha,"%d de %M de %Y") as fecha,Clinica,Hora,Estado,Observaciones,NombreMedico,ApellidoPaternoMedico,ApellidoMaternoMedico FROM citas inner join medico on medico.CedulaProfesional= citas.Cedula WHERE NSS = ?',[NSS]);
     const enlace4 = await pool.query('Select * from diagnostico where NSS=? order by fechad desc limit 1 ',[NSS]);
@@ -354,7 +354,7 @@ router.get('/verPerfilPC/:NSS', async (req,res)=>{
     const enlace = await pool.query('SELECT paciente.NSS,NombrePaciente,NumeroInter,idDomicilio,NumeroExt,Ciudad,Estado,ApellidoPaternoPaciente,ApellidoMaternoPaciente,SexoPaciente,DATE_FORMAT(FechaNacimientoPaciente,"%d de %M de %Y") as FechaNacimientoPaciente ,timestampdiff(year,FechaNacimientoPaciente,now()) as edad,CorreoElectronicoPaciente,Calle,Colonia,Municipio from paciente inner join domicilio on paciente.NSS= domicilio.NSS where paciente.NSS = ?',[NSS]);
     const enlace4 = await pool.query('Select * from diagnostico where NSS=? order by fechad desc limit 1 ',[NSS]);
     
-    const enlace2 = await pool.query('SELECT  NombreAF,ApellidoAPAF,GeneroAF,Parentesco,Padecimiento,ApellidoAMAF,DATE_FORMAT(FechaNAF,"%d de %M de %Y") as FechaNAF from AntecedentesF WHERE NSS = ?',[NSS]);
+    const enlace2 = await pool.query('SELECT  NombreAF,ApellidoAPAF,GeneroAF,Parentesco,Padecimiento,ApellidoAMAF,DATE_FORMAT(FechaNAF,"%d de %M de %Y") as FechaNAF from antecedentesF WHERE NSS = ?',[NSS]);
     const enlace3 = await pool.query('SELECT *FROM citas WHERE NSS = ?',[NSS]);
      
     res.render('links/verPerfilPC', {links: enlace[0],link: enlace2,linkss: enlace3,ABC: enlace4[0]});
@@ -410,9 +410,9 @@ router.post('/AgregarAF/:NSS', async (req,res)=>{ //nueva informacion
         Padecimiento
     };
     console.log(newLink);
-    pool.query('INSERT INTO AntecedentesF set ?', [newLink]);//petición asincrona y query para insertar usuario
+    pool.query('INSERT INTO antecedentesF set ?', [newLink]);//petición asincrona y query para insertar usuario
     const enlace = await pool.query('SELECT paciente.NSS,NombrePaciente,ApellidoPaternoPaciente,ApellidoMaternoPaciente,SexoPaciente,FechaNacimientoPaciente,timestampdiff(year,FechaNacimientoPaciente,now()) as edad,CorreoElectronicoPaciente,Calle,Colonia,Municipio from paciente inner join domicilio on paciente.NSS= domicilio.NSS where paciente.NSS = ?',[NSS]);
-    const enlace2 = await pool.query('SELECT * FROM AntecedentesF WHERE NSS = ?',[NSS]);
+    const enlace2 = await pool.query('SELECT * FROM antecedentesF WHERE NSS = ?',[NSS]);
     const enlace3 = await pool.query('SELECT *FROM citas WHERE NSS = ?',[NSS]);
     console.log(enlace2);
     console.log(enlace);
@@ -428,7 +428,7 @@ router.get('/EditarAF/:IDAF/:NSS', async (req,res)=>{
       const enlace = await pool.query('SELECT paciente.NSS,NombrePaciente,NumeroInter,idDomicilio,NumeroExt,Ciudad,Estado,ApellidoPaternoPaciente,ApellidoMaternoPaciente,SexoPaciente,DATE_FORMAT(FechaNacimientoPaciente,"%d de %M de %Y") as FechaNacimientoPaciente ,timestampdiff(year,FechaNacimientoPaciente,now()) as edad,CorreoElectronicoPaciente,Calle,Colonia,Municipio from paciente inner join domicilio on paciente.NSS= domicilio.NSS where paciente.NSS = ?',[NSS]);
       console.log(enlace)
       await pool.query('SET lc_time_names = "es_ES"');
-     const enlace4 = await pool.query('Select IDAF,NombreAF,ApellidoAPAF,ApellidoAMAF,GeneroAF,Parentesco,Padecimiento,DATE_FORMAT(FechaNAF,"%d de %M de %Y") as FechaNAF ,NSS from antecedentesf where IDAF=?',[IDAF]);
+     const enlace4 = await pool.query('Select IDAF,NombreAF,ApellidoAPAF,ApellidoAMAF,GeneroAF,Parentesco,Padecimiento,DATE_FORMAT(FechaNAF,"%d de %M de %Y") as FechaNAF ,NSS from antecedentesF where IDAF=?',[IDAF]);
     res.render('links/EditarAF', { links:enlace[0], ABC: enlace4[0]});
 })
 router.post('/EditarAF/:IDAF/:NSS', async (req,res)=>{ //nueva informacion 
@@ -444,13 +444,13 @@ router.post('/EditarAF/:IDAF/:NSS', async (req,res)=>{ //nueva informacion
         Padecimiento
     }; 
     console.log(newLink);
-    pool.query('update INTO AntecedentesF set ? WHERE = ?', [newLink,IDAF]);//petición asincrona y query para insertar usuario
+    pool.query('update INTO antecedentesF set ? WHERE = ?', [newLink,IDAF]);//petición asincrona y query para insertar usuario
     await pool.query('SET lc_time_names = "es_ES"');
     const enlace = await pool.query('SELECT paciente.NSS,NombrePaciente,NumeroInter,idDomicilio,NumeroExt,Ciudad,Estado,ApellidoPaternoPaciente,ApellidoMaternoPaciente,SexoPaciente,DATE_FORMAT(FechaNacimientoPaciente,"%d de %M de %Y") as FechaNacimientoPaciente ,timestampdiff(year,FechaNacimientoPaciente,now()) as edad,CorreoElectronicoPaciente,Calle,Colonia,Municipio from paciente inner join domicilio on paciente.NSS= domicilio.NSS where paciente.NSS = ?',[NSS]);
       
         
     await pool.query('SET lc_time_names = "es_ES"');
-     const enlace2 = await pool.query('SELECT  NSS,IDAF,NombreAF,ApellidoAPAF,GeneroAF,Parentesco,Padecimiento,ApellidoAMAF,DATE_FORMAT(FechaNAF,"%d de %M de %Y") as FechaNAF from AntecedentesF WHERE NSS = ?',[NSS]);
+     const enlace2 = await pool.query('SELECT  NSS,IDAF,NombreAF,ApellidoAPAF,GeneroAF,Parentesco,Padecimiento,ApellidoAMAF,DATE_FORMAT(FechaNAF,"%d de %M de %Y") as FechaNAF from antecedentesF WHERE NSS = ?',[NSS]);
      const enlace3 = await pool.query('SELECT *FROM citas WHERE NSS = ?',[NSS]);
      const enlace4 = await pool.query('Select * from diagnostico where NSS=? order by fechad desc limit 1 ',[NSS]);
      console.log(enlace2);
@@ -463,13 +463,13 @@ router.post('/EditarAF/:IDAF/:NSS', async (req,res)=>{ //nueva informacion
 router.get('/deleteAF/:IDAF/:NSS', async (req,res)  => {
     const {IDAF} = req.params;
     const {NSS} = req.params; 
-    await pool.query('DELETE from AntecedentesF WHERE IDAF = ?', [IDAF]);
+    await pool.query('DELETE from antecedentesF WHERE IDAF = ?', [IDAF]);
     await pool.query('SET lc_time_names = "es_ES"');
     const enlace = await pool.query('SELECT paciente.NSS,NombrePaciente,NumeroInter,idDomicilio,NumeroExt,Ciudad,Estado,ApellidoPaternoPaciente,ApellidoMaternoPaciente,SexoPaciente,DATE_FORMAT(FechaNacimientoPaciente,"%d de %M de %Y") as FechaNacimientoPaciente ,timestampdiff(year,FechaNacimientoPaciente,now()) as edad,CorreoElectronicoPaciente,Calle,Colonia,Municipio from paciente inner join domicilio on paciente.NSS= domicilio.NSS where paciente.NSS = ?',[NSS]);
       
         
     await pool.query('SET lc_time_names = "es_ES"');
-     const enlace2 = await pool.query('SELECT  NSS,IDAF,NombreAF,ApellidoAPAF,GeneroAF,Parentesco,Padecimiento,ApellidoAMAF,DATE_FORMAT(FechaNAF,"%d de %M de %Y") as FechaNAF from AntecedentesF WHERE NSS = ?',[NSS]);
+     const enlace2 = await pool.query('SELECT  NSS,IDAF,NombreAF,ApellidoAPAF,GeneroAF,Parentesco,Padecimiento,ApellidoAMAF,DATE_FORMAT(FechaNAF,"%d de %M de %Y") as FechaNAF from antecedentesF WHERE NSS = ?',[NSS]);
      const enlace3 = await pool.query('SELECT *FROM citas WHERE NSS = ?',[NSS]);
      const enlace4 = await pool.query('Select * from diagnostico where NSS=? order by fechad desc limit 1 ',[NSS]);
     console.log(enlace2);
