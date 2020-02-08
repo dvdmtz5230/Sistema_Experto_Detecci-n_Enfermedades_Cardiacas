@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-11">
-      <h2>Foro</h2>
+      <h2>Foro</h2> 
       <p>¿Tienes preguntas o consejos?, Da clic en el botón de abajo</p>
       <button style='cursor: pointer;' onClick="muestra_oculta('contenido')" title="" class="btn-success">Comentar</button><br>
       <div class="media" id="contenido">
@@ -19,49 +19,86 @@
        <hr style="border: 1px solid green">
     </div> <!-- Fin del col -->
   </div> <!--Fin del row-->
+<br>
+ <div class="container-mt3">
+   <ul class="nav nav-tabs" role="tablist">
+     <li class="nav-item">
+       <a class="nav-link active" data-toggle="tab" href="#Pub">Publicaciones</a>
+     </li>
+     <li class="nav-item">
+       <a class="nav-link" data-toggle="tab" href="#MPub">Mis publicaciones</a>
+     </li>
+   </ul>
+ </div>
 
-  <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-11">
-      <div class="container-mt3">
-        <h2>Otras publicaciones</h2><br>
-        {{#each links}}
-        <br>
-          <div class="media border p-3">
-            <div class="media-body">
-              <h4>{{this.NombrePaciente}} {{this.ApellidoPaternoPaciente}}</h4>
-              <div class="media p-3">
-                <h5>{{this.Comentario}}</h5>
-              </div><!--media p-3 comentario-->
-              {{#each ../cons}}
-                {{#compare ../this.idForoComentario "==" this.y }}
-                  <div class="media border p-2">
-                    <div class="media-body">
-                      <h5>{{this.nom}}<small> respondio:</small></h5>
-                      <h5>{{this.Respuesta}}<small><i><br>Posted on February 20 2016</i></small></h5><br>
-                    </div><!--respuesta-->
-                  </div> <!--media p-3-->
-                {{/compare}}<br>
-              {{/each}}
+<div class="tab-content">
+  <div id="Pub" class="container tab-pane active"><br>
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-11">
+        <div class="container-mt3">
+          <h2>Otras publicaciones</h2><br>
+          {{#each links}}<br>
+            <div class="media border p-3">
+              <div class="media-body">
+                <h4>{{this.NombrePaciente}} {{this.ApellidoPaternoPaciente}}</h4>
+                <div class="media p-3">
+                  <h5>{{this.Comentario}}</h5>
+                </div><!--media p-3 comentario-->
+                {{#each ../cons}}
+                  {{#compare ../this.idForoComentario "==" this.y }}
+                    <div class="media border p-2">
+                      <div class="media-body">
+                        <h5>{{this.nom}}<small> respondio:</small></h5>
+                        <h5>{{this.Respuesta}}<small><i><br>Posted on February 20 2016</i></small></h5><br>
+                      </div><!--respuesta-->
+                    </div> <!--media p-3-->
+                  {{/compare}}<br>
+                {{/each}}
+                <p> <b><i>Responer a:</b></i> {{this.NombrePaciente}} </p>
+                <div class="media p-3 form-group">
+                  <form action="/pacientes/respuesta" method="POST">
+                    <div class="from-control">
+                      <textarea class="form-control" name="Respuesta" rows="3" cols="130"></textarea>
+                      <input type="number" name="idForoComentario" value="{{this.idForoComentario}}" hidden>
+                      <input type="text" name="NSS" value="{{../user.NSS}}" hidden>
+                    </div>
+                    <div class="form-group"><br>
+                      <button class="btn btn-success">Guardar contacto</button>
+                    </div>
+                  </form>
+                </div>
+              </div><!--media-body-->
+            </div><!--media border p-3-->
+          {{/each}}<br>
+        </div><!--container-->
+      </div><!--col-->
+    </div><!--Row-->
+  </div>
 
-              <p> <b><i>Responer a:</b></i> {{this.NombrePaciente}} </p>
-              <div class="media p-3 form-group">
-                <form action="/pacientes/respuesta" method="POST">
-                  <div class="from-control">
-                    <textarea class="form-control" name="Respuesta" rows="3" cols="130"></textarea>
-                    <input type="number" name="idForoComentario" value="{{this.idForoComentario}}" hidden>
-                    <input type="text" name="NSS" value="{{../user.NSS}}" hidden>
-                  </div>
-                  <div class="form-group"><br>
-                    <button class="btn btn-success">Guardar contacto</button>
-                  </div>
-                </form>
-              </div>
-            </div><!--media-body-->
-          </div><!--media border p-3-->
-        {{/each}}
-        <br>
-      </div><!--container-->
-    </div><!--col-->
-  </div><!--Row-->
+  <div id="MPub" class="container tab-pane fade"><br>
+    {{#each links}}<br>
+      {{#compare NSS "==" user.NSS}}
+      <div class="media border p-3">
+        <div class="media-body">
+          <h4>{{this.NombrePaciente}} {{this.ApellidoPaternoPaciente}}</h4>
+          <div class="media p-3">
+            <h5>{{this.Comentario}}</h5>
+          </div><!--media p-3 comentario-->
+          {{#each ../cons}}
+            {{#compare ../this.idForoComentario "==" this.y }}
+              <div class="media border p-2">
+                <div class="media-body">
+                  <h5>{{this.nom}}<small> respondio:</small></h5>
+                  <h5>{{this.Respuesta}}<small><i><br>Posted on February 20 2016</i></small></h5><br>
+                </div><!--respuesta-->
+              </div> <!--media p-3-->
+            {{/compare}}<br>
+          {{/each}}
+        </div>
+      </div>
+      {{/compare}}
+    {{/each}}   
+  </div>
+</div>
 </div>

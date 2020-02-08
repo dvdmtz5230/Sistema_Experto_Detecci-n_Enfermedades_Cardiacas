@@ -15,8 +15,9 @@ router.get('/perfil/:NSS', async (req,res)=>{
 
 
 router.get('/Forum', async (req,res)=>{
-  const consulta = await pool.query('SELECT forocomentario.Comentario, NombrePaciente, ApellidoPaternoPaciente, idForoComentario FROM forocomentario inner join paciente on paciente.NSS = forocomentario.NSS ORDER BY idForoComentario DESC');
+  const consulta = await pool.query('SELECT forocomentario.Comentario, NombrePaciente, ApellidoPaternoPaciente,NSS idForoComentario FROM forocomentario inner join paciente on paciente.NSS = forocomentario.NSS ORDER BY idForoComentario DESC');
   const consulta2 =await pool.query('SELECT idForoRespuesta as y, Respuesta, NombrePaciente as nom FROM fororespuesta inner join paciente on paciente.NSS = fororespuesta.NSS');
+  
   res.render('pacientes/Forum',{links: consulta, cons: consulta2});
 })
 
