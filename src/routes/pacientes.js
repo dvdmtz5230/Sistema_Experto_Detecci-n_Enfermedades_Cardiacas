@@ -15,9 +15,9 @@ router.get('/perfil/:NSS', async (req,res)=>{
 
 
 router.get('/Forum', async (req,res)=>{
-  const consulta = await pool.query('SELECT forocomentario.Comentario, NombrePaciente, ApellidoPaternoPaciente,NSS idForoComentario FROM forocomentario inner join paciente on paciente.NSS = forocomentario.NSS ORDER BY idForoComentario DESC');
+  const consulta = await pool.query('SELECT forocomentario.Comentario, NombrePaciente, ApellidoPaternoPaciente,paciente.NSS, idForoComentario FROM forocomentario inner join paciente on paciente.NSS = forocomentario.NSS ORDER BY idForoComentario DESC');
   const consulta2 =await pool.query('SELECT idForoRespuesta as y, Respuesta, NombrePaciente as nom FROM fororespuesta inner join paciente on paciente.NSS = fororespuesta.NSS');
-  
+  console.log(consulta);
   res.render('pacientes/Forum',{links: consulta, cons: consulta2});
 })
 
@@ -45,6 +45,32 @@ router.post('/respuesta', async (req,res)=>{
   
   await pool.query('INSERT INTO ForoRespuesta set ?', [newR]);
   res.redirect('/pacientes/forum');
+})
+
+
+router.get('/editF/:idForoComentario',async (req,res)=>{
+  const {idForoComentario} = req.params;
+  
+  const consulta = await pool.query('SELECT * FROM forocomentario where idForoComentario=?',[idForoComentario]);
+  console.log(consulta);
+  res.render('pacientes/editF',{links: consulta[0]});
+});
+
+router.post('/editFR', async (req,res)=>{
+  const {idForoComentario, Comentario} = req.body;
+  const edi = {
+    Comentario
+  }
+  await pool.query('UPDATE forocomentario set ? where idForoComentario = ?',[edi,idForoComentario]);
+  req.flash('success','Modificación correcta');
+  res.redirect('/pacientes/Forum');
+});
+
+router.post('/EF', async (req,res)=>{
+  const {idForoComentario} = req.params;
+  await pool.query('DELETE FROM prevencion where idPrevencion = ?', [idForoComentario]);
+  req.flash('success','Publicación eliminada');
+  res.redirect('/pacientes/Forum');
 })
 
 router.get('/contacto/:NSS',  (req,res)=>{
@@ -135,5 +161,9 @@ classifier.save('./ClasificadorBayes.json',function(err,classifier){});
    
   res.render('profile' );
 })
+
+
+
+
   module.exports = router;
 

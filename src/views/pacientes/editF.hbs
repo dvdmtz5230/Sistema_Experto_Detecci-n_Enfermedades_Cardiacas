@@ -1,0 +1,55 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <div class="modal-body">
+                        <form action="/pacientes/editFR" method="POST">
+                            <div class="form-group">
+                                <h4>Publicación:</h4>
+                                <textarea type="text" rows="4" cols="50" name="Comentario" class="form-control">{{links.Comentario}}</textarea>
+                                <input type="text" hidden name="idForoComentario" value="{{links.idForoComentario}}">
+                            </div>
+                             <div class="form-group">
+                                <button class="btn btn-success">Editar</button>
+                                <a href="/links/info" class="btn btn-info">Cancelar</a>          <br>                              <br>
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaldelete">
+                                     Eliminar</button>  
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal eliminar-->
+                    <div class="modal" id="myModaldelete">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h3 class="modal-title">Confirmación de eliminación</h3>
+                                    <button type="button" class="close" data-dismiss="modal">×</button>
+                                </div> 
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    ¿Estas seguro de querer eliminar la publicación mostrada?<br>
+                                    <form action="/pacientes/EF" method="POST">
+                                        <div class="form-group">
+                                            <textarea type="text" rows="4" cols="50" class="form-control" readonly>{{links.Comentario}}</textarea>
+                                            <input type="text" name="idForoComentario" value="{{links.idForoComentario}}" hidden>
+                                        </div>
+                                        <div class="form-group">
+                                            <button class="btn btn-success btn-block">Confirmar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                                </div>
+                            </div><!--modal content-->
+                        </div>
+                    </div>
