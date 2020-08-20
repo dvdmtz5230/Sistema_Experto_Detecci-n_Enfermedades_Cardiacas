@@ -37,7 +37,7 @@
     "timeago.js": "^4.0.0-beta.2"
   },
   "devDependencies": {
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "bower": "^1.8.8",
     "mysql-import": "^3.0.6",
     "node-cron": "^2.0.3",
