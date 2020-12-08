@@ -23,7 +23,7 @@
     "express-mysql-session": "^2.1.0",
     "express-session": "^1.16.2",
     "express-validator": "^6.1.1",
-    "fast-csv": "^3.4.0",
+    "fast-csv": "^4.3.6",
     "fs-extra": "^8.1.0",
     "handlebars-helpers": "^0.10.0",
     "morgan": "^1.9.1",
